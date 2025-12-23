@@ -306,3 +306,39 @@ code{
   .contact{ grid-template-columns: 1fr; }
   .links a{ margin-left:10px; }
 }
+
+.contact-icons{
+  display:flex;
+  justify-content:center;
+  gap: 28px;
+  margin-top: 24px;
+}
+
+.contact-icons a{
+  width:56px;
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  box-shadow: var(--shadow);
+  transition: all .25s ease;
+}
+
+.contact-icons a:hover{
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.icon{
+  width:26px;
+  height:26px;
+  fill: var(--accent2);
+}
+
+.contact-icons a:hover .icon{
+  fill:#ffffff;
+}
+
