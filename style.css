@@ -20,7 +20,7 @@
   --accent-warm: var(--golden);
   --accent-hover: var(--blush);
 
-  --shadow: 0 10px 28px rgba(0,0,0,.08);
+  --shadow: 0 6px 18px rgba(0,0,0,.06);
   --radius: 18px;
   --max: 1100px;
 }
@@ -31,10 +31,7 @@ html{ scroll-behavior:smooth; }
 body{
   margin:0;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background:
-    radial-gradient(900px 600px at 10% 0%, rgba(255,197,102,.25), transparent 55%),
-    radial-gradient(700px 500px at 90% 20%, rgba(242,132,130,.22), transparent 60%),
-    var(--bg);
+  background: var(--bg);
   color:var(--text);
   line-height:1.65;
 }
@@ -58,9 +55,10 @@ body{
 .nav-inner{
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:flex-end; /* instead of space-between */
   padding: 14px 0;
 }
+
 
 .logo{
   width:44px;
@@ -126,24 +124,29 @@ h1{
 }
 
 .btn{
-  padding: 11px 18px;
-  border-radius: 14px;
-  border: none;
-  background: var(--panel);
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.14);
+  background: transparent;
   color: var(--text);
   font-weight:800;
   text-decoration:none;
-  box-shadow: var(--shadow);
-  transition: all .25s ease;
+  transition: all .2s ease;
 }
 
 .btn:hover{
-  transform: translateY(-2px);
+  border-color: rgba(0,0,0,.22);
+  transform: translateY(-1px);
 }
 
 .btn.primary{
-  background: linear-gradient(135deg, var(--golden), var(--blush));
-  color:#ffffff;
+  background: var(--moss);
+  border-color: var(--moss);
+  color: #fff;
+}
+
+.btn.primary:hover{
+  background: #769a91; /* slightly darker moss */
 }
 
 .meta{
@@ -155,13 +158,10 @@ h1{
 }
 
 /* Hero card */
-.hero-card{
-  background: var(--panel);
-  border-radius: var(--radius);
-  overflow:hidden;
-  box-shadow: var(--shadow);
+.hero-card, .card, .skill, .about-card{
+  box-shadow: none;
+  border: 1px solid rgba(0,0,0,.10);
 }
-
 .hero-img{
   height: 260px;
   background: linear-gradient(135deg, var(--sakura), var(--champagne));
