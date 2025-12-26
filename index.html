@@ -209,5 +209,24 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
+        <script>
+  function copyEmail(btn, email) {
+    navigator.clipboard.writeText(email).then(() => {
+      const wrap = btn.closest(".copy-wrap");
+      const badge = wrap.querySelector(".copied-badge");
+
+      badge.classList.remove("show"); // reset animation
+      void badge.offsetWidth;         // reflow so it re-triggers
+      badge.classList.add("show");
+
+      // optional: tiny haptic feel (visual)
+      btn.classList.add("pop");
+      setTimeout(() => btn.classList.remove("pop"), 180);
+    });
+  }
+</script>
+
+        
 </body>
 </html>
