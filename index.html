@@ -42,10 +42,8 @@
         </div>
       </div>
 
-      <!-- Hero image box (drop in a render later) -->
       <div class="hero-card">
         <div class="hero-img">
-          <!-- Put an image at /images/hero.jpg and uncomment below -->
           <!-- <img src="images/hero.jpg" alt="CAD render preview" /> -->
           <div class="placeholder">
             <strong>Hero Render</strong>
@@ -56,7 +54,7 @@
         <div class="hero-card-footer">
           <div>
             <div class="small">Currently focused on</div>
-            <div class="strong">Robotics • Design for Manufacturing • Medical Devices • Assistive Technology </div>
+            <div class="strong">Robotics • Design for Manufacturing • Medical Devices • Assistive Technology</div>
           </div>
         </div>
       </div>
@@ -73,15 +71,12 @@
       <div class="grid">
         <article class="card">
           <div class="card-img">
-            <!-- <img src="images/project1.jpg" alt="Project 1 render" /> -->
             <div class="placeholder">Project Image</div>
           </div>
           <div class="card-body">
             <h3>Elbow Air Assembly</h3>
             <p class="tags">NX • Assemblies • Constraints • Exploded View</p>
-            <p class="desc">
-              An elbow air engine enclosed inside a blender base.
-            </p>
+            <p class="desc">An elbow air engine enclosed inside a blender base.</p>
             <ul class="bullets">
               <li>Key skill: assembly constraints & interference checks</li>
               <li>Deliverables: render set + exploded view</li>
@@ -99,14 +94,14 @@
           </div>
           <div class="card-body">
             <h3>Wheel Rim Design + Drawings</h3>
-            <p class="tags">Sheet Metal • Flat Pattern • GD&T</p>
+            <p class="tags">Design • Drawings • Rendering</p>
             <p class="desc">
               Designed a new and unique wheel rim for easy manufacturing and aesthetics.
-              Includes flat pattern, bend notes, and dimensioned drawing.
+              Includes a dimensioned drawing and rendered images.
             </p>
             <ul class="bullets">
               <li>Key skill: DFM</li>
-              <li>Deliverables: 2D drawing + Rendered Images </li>
+              <li>Deliverables: 2D drawing + rendered images</li>
             </ul>
             <div class="card-actions">
               <a class="btn small" href="#" target="_blank" rel="noopener">Drawing PDF</a>
@@ -114,6 +109,7 @@
             </div>
           </div>
         </article>
+      </div> <!-- ✅ closes .grid -->
 
       <p class="note">
         Tip: Make a folder called <code>images/</code> and replace each placeholder with your renders.
@@ -169,38 +165,47 @@
           I like projects where you go from a rough idea → clean CAD → drawings → a real build.
         </p>
       </div>
+    </div>
   </section>
 
-<section id="contact" class="section alt">
-  <div class="container contact-center">
-    <h2>Contact</h2>
-    <p class="muted">Best way to reach me:</p>
+  <!-- Contact -->
+  <section id="contact" class="section alt">
+    <div class="container contact-center">
+      <h2>Contact</h2>
+      <p class="muted">Best way to reach me:</p>
 
-    <div class="contact-icons">
+      <div class="contact-icons">
+        <div class="copy-wrap">
+          <button class="icon-btn" type="button"
+            aria-label="Copy email"
+            onclick="copyEmail(this, 'aryasbhangale@gmail.com')">
+            <svg viewBox="0 0 24 24" class="icon">
+              <path d="M20 6v12H4V6l8 6 8-6z"/>
+            </svg>
+          </button>
+          <span class="copied-badge" aria-hidden="true">Copied!</span>
+        </div>
 
-      <!-- Email -->
-      <div class="copy-wrap">
-        <button class="icon-btn" type="button"
-          aria-label="Copy email"
-          onclick="copyEmail(this, 'aryasbhangale@gmail.com')">
+        <a class="icon-btn" href="https://www.linkedin.com/in/arya-bhangale"
+          target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" class="icon">
-            <path d="M20 6v12H4V6l8 6 8-6z"/>
+            <path d="M4 3a2 2 0 100 4 2 2 0 000-4zm0 6h4v12H4zM10 9h4v2h.1c.6-1.1 2-2.3 4.1-2.3 4.4 0 5.2 2.9 5.2 6.7V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8-1.7 0-2 1.3-2 2.7V21h-4z"/>
           </svg>
-        </button>
-        <span class="copied-badge">Copied!</span>
+        </a>
       </div>
-
-      <!-- LinkedIn -->
-      <a class="icon-btn" href="https://www.linkedin.com/in/arya-bhangale"
-         target="_blank" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" class="icon">
-          <path d="M4 3a2 2 0 100 4 2 2 0 000-4zm0 6h4v12H4zM10 9h4v2h.1c.6-1.1 2-2.3 4.1-2.3 4.4 0 5.2 2.9 5.2 6.7V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8-1.7 0-2 1.3-2 2.7V21h-4z"/>
-        </svg>
-      </a>
-
     </div>
-  </div>
-</section>
+  </section>
 
+  <script>
+    function copyEmail(btn, email) {
+      navigator.clipboard.writeText(email).then(() => {
+        const wrap = btn.closest(".copy-wrap");
+        const badge = wrap.querySelector(".copied-badge");
+        badge.classList.remove("show");
+        void badge.offsetWidth;
+        badge.classList.add("show");
+      });
+    }
+  </script>
 </body>
 </html>
