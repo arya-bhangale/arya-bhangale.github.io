@@ -315,6 +315,85 @@ h1{
 .contact-icons a:hover .icon{
   fill:#ffffff;
 }
+.copy-wrap{
+  position: relative;
+  display: inline-flex;
+}
+
+.icon-btn{
+  width:58px;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 50%;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  border: none;
+  cursor: pointer;
+  transition: transform .18s ease, background .2s ease;
+}
+
+.icon-btn:hover{
+  background: var(--blush);
+  transform: translateY(-3px);
+}
+
+.icon-btn:hover .icon{
+  fill:#ffffff;
+}
+
+.icon-btn.pop{
+  transform: translateY(-2px) scale(1.03);
+}
+
+.copied-badge{
+  position:absolute;
+  left: 50%;
+  top: -12px;
+  transform: translate(-50%, -8px);
+  opacity: 0;
+  pointer-events: none;
+
+  font-weight: 800;
+  font-size: .85rem;
+  letter-spacing: .2px;
+
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--moss), var(--golden));
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 999px;
+  padding: 6px 10px;
+
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+}
+
+.copied-badge::after{
+  content:"";
+  position:absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: inherit;
+  border-left: 1px solid rgba(255,255,255,.25);
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.copied-badge.show{
+  animation: floatPop 1.2s ease forwards;
+}
+
+
+@keyframes floatPop{
+  0%   { opacity: 0; transform: translate(-50%, 6px) scale(.92); filter: blur(.2px); }
+  18%  { opacity: 1; transform: translate(-50%, -10px) scale(1.02); }
+  45%  { opacity: 1; transform: translate(-50%, -14px) scale(1); }
+  85%  { opacity: .95; transform: translate(-50%, -18px) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -24px) scale(.98); }
+}
 
 /* ---------------- FOOTER ---------------- */
 .footer{
