@@ -215,10 +215,10 @@ h1{
 }
 
 .card-img{
-  height: 180px;
+  height: 200px;
   background: linear-gradient(135deg, var(--moss), var(--sakura));
-  display:grid;
-  place-items:center;
+  overflow: hidden;
+  display:block;               
 }
 
 .card-body{
@@ -251,7 +251,10 @@ h1{
   margin-top:auto;
   display:flex;
   gap:10px;
+  flex-wrap:wrap;
+  align-items:stretch;        
 }
+
 
 /* ---------------- SKILLS ---------------- */
 .skills{
@@ -386,6 +389,18 @@ h1{
   animation: floatPop 1.2s ease forwards;
 }
 
+.btn.small{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  height:44px;                  
+  padding: 0 16px; 
+  line-height:1.15;
+
+  white-space: nowrap;         
+}
 
 @keyframes floatPop{
   0%   { opacity: 0; transform: translate(-50%, 6px) scale(.92); filter: blur(.2px); }
