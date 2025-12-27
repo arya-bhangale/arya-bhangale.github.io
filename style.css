@@ -431,6 +431,83 @@ h1{
   border-radius: 20px; 
   box-shadow: 0 12px 30px rgba(0,0,0,.12);
 }
+/*Slideshow*/
+.slideshow{
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.10);
+  background: #111;
+}
+
+.slides{
+  position: relative;
+  height: 420px;                 /* adjust */
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit: contain;           /* use cover if you want cropping */
+  opacity:0;
+  transform: scale(1.01);
+  transition: opacity .25s ease, transform .35s ease;
+  pointer-events:none;
+}
+
+.slide.active{
+  opacity:1;
+  transform: scale(1);
+  pointer-events:auto;
+}
+
+.slide-btn{
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius: 999px;
+  border:none;
+  cursor:pointer;
+  background: rgba(255,255,255,.85);
+  font-size: 28px;
+  line-height: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition: transform .15s ease;
+}
+
+.slide-btn:hover{ transform: translateY(-50%) scale(1.04); }
+.slide-btn.prev{ left: 12px; }
+.slide-btn.next{ right: 12px; }
+
+.dots{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:10px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.7);
+  background: rgba(255,255,255,.35);
+  cursor:pointer;
+}
+
+.dot.active{
+  background: rgba(255,255,255,.95);
+}
+
 
 /* ---------------- FOOTER ---------------- */
 .footer{
