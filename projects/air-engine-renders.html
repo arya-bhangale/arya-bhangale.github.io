@@ -1,4 +1,4 @@
-gi<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -6,6 +6,61 @@ gi<!doctype html>
   <title>Elbow Air Engine Assembly Renders | Arya Bhangale</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slideshows = document.querySelectorAll(".slideshow");
+
+  slideshows.forEach(root => {
+    const slides = Array.from(root.querySelectorAll(".slide"));
+    const prevBtn = root.querySelector(".prev");
+    const nextBtn = root.querySelector(".next");
+    const dotsWrap = root.querySelector(".dots");
+
+    let i = 0;
+    let timer = null;
+
+    // Build dots
+    dotsWrap.innerHTML = "";
+    slides.forEach((_, idx) => {
+      const d = document.createElement("button");
+      d.type = "button";
+      d.className = "dot" + (idx === 0 ? " active" : "");
+      d.setAttribute("aria-label", "Go to slide " + (idx + 1));
+      d.addEventListener("click", () => go(idx));
+      dotsWrap.appendChild(d);
+    });
+
+    const dots = Array.from(root.querySelectorAll(".dot"));
+
+    function render(){
+      slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+      dots.forEach((d, idx) => d.classList.toggle("active", idx === i));
+    }
+
+    function go(idx){
+      i = (idx + slides.length) % slides.length;
+      render();
+      restartAutoplay();
+    }
+
+    function next(){ go(i + 1); }
+    function prev(){ go(i - 1); }
+
+    prevBtn.addEventListener("click", prev);
+    nextBtn.addEventListener("click", next);
+
+    function restartAutoplay(){
+      if (root.dataset.autoplay !== "true") return;
+      if (timer) clearInterval(timer);
+      const ms = parseInt(root.dataset.interval || "3500", 10);
+      timer = setInterval(next, ms);
+    }
+
+    restartAutoplay();
+    render();
+  });
+});
+</script>
 
 <body>
 
