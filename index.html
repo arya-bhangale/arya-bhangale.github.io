@@ -8,6 +8,69 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.png" type="image/png">
 </head>
+<script>
+(function initSlideshows(){
+  const slideshows = document.querySelectorAll(".slideshow");
+
+  slideshows.forEach(root => {
+    const slides = Array.from(root.querySelectorAll(".slide"));
+    const prevBtn = root.querySelector(".prev");
+    const nextBtn = root.querySelector(".next");
+    const dotsWrap = root.querySelector(".dots");
+
+    let i = 0;
+    let timer = null;
+
+    // Build dots
+    dotsWrap.innerHTML = "";
+    slides.forEach((_, idx) => {
+      const d = document.createElement("button");
+      d.type = "button";
+      d.className = "dot" + (idx === 0 ? " active" : "");
+      d.setAttribute("aria-label", "Go to slide " + (idx+1));
+      d.addEventListener("click", () => go(idx));
+      dotsWrap.appendChild(d);
+    });
+
+    const dots = Array.from(root.querySelectorAll(".dot"));
+
+    function render(){
+      slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+      dots.forEach((d, idx) => d.classList.toggle("active", idx === i));
+    }
+
+    function go(idx){
+      i = (idx + slides.length) % slides.length;
+      render();
+      restartAutoplay();
+    }
+
+    function next(){ go(i + 1); }
+    function prev(){ go(i - 1); }
+
+    prevBtn.addEventListener("click", prev);
+    nextBtn.addEventListener("click", next);
+
+    // Keyboard support when focused
+    root.tabIndex = 0;
+    root.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    });
+
+    function restartAutoplay(){
+      if (!root.dataset.autoplay) return;
+      if (timer) clearInterval(timer);
+      const ms = parseInt(root.dataset.interval || "3500", 10);
+      timer = setInterval(next, ms);
+    }
+
+    // Autoplay toggle: set data-autoplay="true" to enable
+    if (root.dataset.autoplay === "true") restartAutoplay();
+    render();
+  });
+})();
+</script>
 
 <body>
   <!-- Navbar -->
