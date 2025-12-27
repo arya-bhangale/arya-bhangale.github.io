@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Arya Bhangale | Design Portfolio</title>
-  <meta name="description" content="CAD and design portfolio: projects, renders, drawings, and build notes." />
+  <meta name="description" content="CAD and design portfolio! Check out my projects, renders, drawings, and build notes!" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -25,15 +25,18 @@
   <main id="top" class="hero">
     <div class="container hero-grid">
       <div>
-        <p class="pill">CAD • Mechanical Design • Prototyping</p>
         <h1>Arya Bhangale</h1>
         <p class="sub">
-          I design and build mechanical systems! Whether it be CAD models, drawings, assemblies, and prototypes; here are some of my favorite projects and what I've learned from them!
+          I design and build mechanical systems! Whether it be CAD models, drawings,
+          assemblies, and prototypes; here are some of my favorite projects and what
+          I've learned from them!
         </p>
 
         <div class="cta-row">
           <a class="btn primary" href="#projects">View Projects</a>
-          <a class="btn" href="Arya_Bhangale_Resume_2025.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+          <a class="btn" href="Arya_Bhangale_Resume_2025.pdf" target="_blank" rel="noopener">
+            Resume (PDF)
+          </a>
         </div>
 
         <div class="meta">
@@ -50,7 +53,9 @@
         <div class="hero-card-footer">
           <div>
             <div class="small">Currently focused on</div>
-            <div class="strong">Robotics • Design for Manufacturing • Medical Devices • Assistive Technology</div>
+            <div class="strong">
+              Robotics • Design for Manufacturing • Medical Devices • Assistive Technology
+            </div>
           </div>
         </div>
       </div>
@@ -78,15 +83,15 @@
               <li>Deliverables: render set + exploded view</li>
             </ul>
             <div class="card-actions">
-              <a class="btn small" href="#" target="_blank" rel="noopener">Project PDF</a>
-              <a class="btn small ghost" href="#" target="_blank" rel="noopener">GitHub / Files</a>
+              <a class="btn small" href="#">Project PDF</a>
+              <a class="btn small ghost" href="#">GitHub / Files</a>
             </div>
           </div>
         </article>
 
         <article class="card">
           <div class="card-img">
-             <img src="images/wheelrimisometricrender.png" alt="Flower Wheel Rim CAD render">
+            <img src="images/wheelrimisometricrender.png" alt="Wheel Rim CAD render">
           </div>
           <div class="card-body">
             <h3>Wheel Rim Design + Drawings</h3>
@@ -100,12 +105,14 @@
               <li>Deliverables: 2D drawing + rendered images</li>
             </ul>
             <div class="card-actions">
-              <a class="btn small" href="#" target="_blank" rel="noopener">Drawings</a>
-              <a class="btn small ghost" href="#" target="_blank" rel="noopener">Engineering Files</a>
+              <a class="btn small" href="#">Drawings</a>
+              <a class="btn small ghost" href="#">Engineering Files</a>
             </div>
           </div>
         </article>
-      </div> 
+      </div>
+    </div>
+  </section>
 
   <!-- Skills -->
   <section id="skills" class="section alt">
@@ -120,8 +127,8 @@
           <h3>CAD</h3>
           <ul>
             <li>Siemens NX (parts, assemblies, drawings)</li>
-            <li>SolidWorks / Fusion 360 (as needed)</li>
-            <li>Surface basics, parametric modeling</li>
+            <li>SolidWorks / Fusion 360</li>
+            <li>Parametric modeling</li>
           </ul>
         </div>
 
@@ -136,7 +143,7 @@
         <div class="skill">
           <h3>Build / Prototype</h3>
           <ul>
-            <li>3D printing, simple machining exposure</li>
+            <li>3D printing</li>
             <li>Assembly + fit checks</li>
             <li>Testing + iteration</li>
           </ul>
@@ -149,9 +156,10 @@
   <section id="about" class="section">
     <div class="container about">
       <div>
-        <h1>About</h1>
+        <h2>About</h2>
         <p>
-          I’m a mechanical engineering student interested in designing assistive technology and medical devices that help people!
+          I’m a mechanical engineering student interested in designing assistive
+          technology and medical devices that help people.
           I like projects where you go from a rough idea → clean CAD → drawings → a real build.
         </p>
       </div>
@@ -167,17 +175,17 @@
       <div class="contact-icons">
         <div class="copy-wrap">
           <button class="icon-btn" type="button"
-            aria-label="Copy email"
-            onclick="copyEmail(this, 'aryasbhangale@gmail.com')">
+            onclick="copyEmail(this, 'aryasbhangale@gmail.com')"
+            aria-label="Copy email">
             <svg viewBox="0 0 24 24" class="icon">
               <path d="M20 6v12H4V6l8 6 8-6z"/>
             </svg>
           </button>
-          <span class="copied-badge" aria-hidden="true">Copied!</span>
+          <span class="copied-badge">Copied!</span>
         </div>
 
         <a class="icon-btn" href="https://www.linkedin.com/in/arya-bhangale"
-          target="_blank" rel="noopener" aria-label="LinkedIn">
+           target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" class="icon">
             <path d="M4 3a2 2 0 100 4 2 2 0 000-4zm0 6h4v12H4zM10 9h4v2h.1c.6-1.1 2-2.3 4.1-2.3 4.4 0 5.2 2.9 5.2 6.7V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8-1.7 0-2 1.3-2 2.7V21h-4z"/>
           </svg>
@@ -189,8 +197,7 @@
   <script>
     function copyEmail(btn, email) {
       navigator.clipboard.writeText(email).then(() => {
-        const wrap = btn.closest(".copy-wrap");
-        const badge = wrap.querySelector(".copied-badge");
+        const badge = btn.parentElement.querySelector(".copied-badge");
         badge.classList.remove("show");
         void badge.offsetWidth;
         badge.classList.add("show");
