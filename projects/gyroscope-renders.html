@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gyroscope Assembly Renders | Arya Bhangale</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+
+  <!-- Top Nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <nav class="links">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Project Hero -->
+  <main class="section">
+    <div class="container">
+      <h1>Gyroscope Assembly Renders</h1>
+      <p class="sub">Check out the rendered gyroscope!</p>
+
+      <div class="slideshow" data-autoplay="true" data-interval="3500">
+        <div class="slides">
+          <img class="slide active" src="../images/rendered_assembled_gyroscope.png" alt="Gyroscope Assembly Render">
+          <img class="slide" src="../images/exploded_rendered_gyroscope.jpg" alt="Gyroscope Exploded Render">
+          <img class="slide" src="../images/rendered_rotor.jpg" alt="Gyroscope Rotor Render">
+        </div>
+
+        <button class="slide-btn prev" type="button" aria-label="Previous">‹</button>
+        <button class="slide-btn next" type="button" aria-label="Next">›</button>
+
+        <div class="dots" aria-label="Slide dots"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Project Details -->
+  <section class="section alt">
+    <div class="container">
+      <h2>Engineering Justification Sheet</h2>
+
+      <div class="pdf-wrap">
+        <iframe
+          src="../files/gyroscope_justification_sheet.pdf"
+          width="100%"
+          height="800"
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <p class="muted">
+        <a href="../files/gyroscope_justification_sheet.pdf" target="_blank" rel="noopener">
+          Open full PDF ↗
+        </a>
+      </p>
+
+      <a class="btn primary" href="../index.html#projects">← Back to Projects</a>
+    </div>
+  </section>
+
+  <!-- Slideshow -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const slideshows = document.querySelectorAll(".slideshow");
+
+      slideshows.forEach(root => {
+        const slides = Array.from(root.querySelectorAll(".slide"));
+        const prevBtn = root.querySelector(".prev");
+        const nextBtn = root.querySelector(".next");
+        const dotsWrap = root.querySelector(".dots");
+
+        if (!slides.length || !prevBtn || !nextBtn || !dotsWrap) return;
+
+        let i = 0;
+        let timer = null;
+
+        dotsWrap.innerHTML = "";
+        slides.forEach((_, idx) => {
+          const d = document.createElement("button");
+          d.type = "button";
+          d.className = "dot" + (idx === 0 ? " active" : "");
+          d.setAttribute("aria-label", "Go to slide " + (idx + 1));
+          d.addEventListener("click", () => go(idx));
+          dotsWrap.appendChild(d);
+        });
+
+        const dots = Array.from(root.querySelectorAll(".dot"));
+
+        function render(){
+          slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+          dots.forEach((d, idx) => d.classList.toggle("active", idx === i));
+        }
+
+        function go(idx){
+          i = (idx + slides.length) % slides.length;
+          render();
+          restartAutoplay();
+        }
+
+        function next(){ go(i + 1); }
+        function prev(){ go(i - 1); }
+
+        prevBtn.addEventListener("click", prev);
+        nextBtn.addEventListener("click", next);
+
+        function restartAutoplay(){
+          if (root.dataset.autoplay !== "true") return;
+          if (timer) clearInterval(timer);
+          const ms = parseInt(root.dataset.interval || "3500", 10);
+          timer = setInterval(next, ms);
+        }
+
+        restartAutoplay();
+        render();
+      });
+    });
+  </script>
+
+</body>
+</html>
