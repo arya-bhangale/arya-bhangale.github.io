@@ -395,6 +395,14 @@ h1{
   100% { opacity: 0; transform: translate(-50%, -24px) scale(.98); }
 }
 
+.hero-img img,
+.card-img img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
 /* ---------------- FOOTER ---------------- */
 .footer{
   padding: 30px 0 42px;
